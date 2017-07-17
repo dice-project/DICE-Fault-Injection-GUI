@@ -1,6 +1,5 @@
 package com.basic;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,6 +19,7 @@ import com.extl.jade.user.SearchFilter;
 import com.extl.jade.user.Server;
 import com.extl.jade.user.UserAPI;
 import com.extl.jade.user.UserService;
+
 @ManagedBean
 public class FCOCheckKeys {
 	public ArrayList<String> listString = new ArrayList<String>();
@@ -35,8 +35,7 @@ public class FCOCheckKeys {
 			url = new URL(com.extl.jade.user.UserAPI.class.getResource("."),
 					cloudapiurl);
 		} catch (MalformedURLException e1) {
-
-			//LoggerWrapper.myLogger.severe("Unable to get FCO WSDL");
+			System.out.println("Unable to get FCO WDSL");
 		}
 
 		// Get the UserAPI
@@ -87,20 +86,17 @@ public class FCOCheckKeys {
 
 			for (Object o : result.getList()) {
 				Server s = ((Server) o);
-				//LoggerWrapper.myLogger.info("Listing VM keyys for:" + s.getResourceUUID());
-
+				System.out.println("Listing VM keys from: " + s.getResourceUUID());
 				List<ResourceKey> resourcekey = s.getResourceKey();
 				for (Object oR : resourcekey) {
 					ResourceKey r = ((ResourceKey) oR);
 					listString.add(r.getName().toString());
 				}
-				//LoggerWrapper.myLogger.info( "Listing VM keyys for:" + listString);
+				System.out.println("Listing VM keys for: " + listString);
 			}
 		} catch (Exception e) {
-			//LoggerWrapper.myLogger.severe("Unable to list keys error: " + e.toString());
-
+			System.out.println("Unable to list keys error: " + e.toString());
 		}
-
 	}
 
 	public ArrayList<String> getList() {

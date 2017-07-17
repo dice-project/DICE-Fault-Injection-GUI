@@ -2,14 +2,11 @@ package com.basic;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.util.Date;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.apache.commons.io.FilenameUtils;
+
 import org.primefaces.model.UploadedFile;
 
 import com.globals.Globals;

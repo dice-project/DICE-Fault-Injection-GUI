@@ -1,6 +1,5 @@
 package com.basic;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
@@ -25,18 +24,7 @@ public class FCOStopVM {
 	@SuppressWarnings("deprecation")
 	public void stopvm(String vmuuid, String cloudusername,
 			String cloudpassword, String cloudapiurl, String cloudUUID) {
-		/*
-		@SuppressWarnings("unused")
-		LoggerWrapper loggerWrapper = null;
-		try {
-			loggerWrapper = LoggerWrapper.getInstance();
-		} catch (SecurityException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
+
 		UserService service;
 		Job stopServer = null;
 
@@ -46,7 +34,6 @@ public class FCOStopVM {
 			url = new URL(com.extl.jade.user.UserAPI.class.getResource("."),
 					cloudapiurl);
 		} catch (MalformedURLException e1) {
-			//LoggerWrapper.myLogger.severe( "Unable to get FCO WSDL");
 
 		}
 
@@ -97,17 +84,15 @@ public class FCOStopVM {
 
 			// Send stop command
 			// Can also be scheduled for time in future.
-			//LoggerWrapper.myLogger.info( "Sending stop command for:  " + vmuuid);
 			stopServer = service.changeServerStatus(vmuuid,
 					ServerStatus.STOPPED, true, new ResourceMetadata(), now);
 			// waits till job completes or fails
 			service.waitForJob(stopServer.getResourceUUID(), false);
-			//LoggerWrapper.myLogger.info( "Server stopped:  " + vmuuid);
 			Globals.fcotext= Globals.fcotext + "Server stopped:  " + vmuuid;
 			RequestContext requestContext4 = RequestContext.getCurrentInstance();
 			requestContext4.update("FCOOUTPUT");
 		} catch (Exception e) {
-			//LoggerWrapper.myLogger.info("Unable to send stop job or server is already stopped");
+			System.out.println("Unable to send stop job or server is already stopped");
 		}
 	}
 

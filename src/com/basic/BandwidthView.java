@@ -15,7 +15,11 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.primefaces.context.RequestContext;
 import org.primefaces.model.UploadedFile;
- 
+ /**
+  * 
+  * @author flexiOps
+  *	No Longer Used
+  */
 @ManagedBean
 public class BandwidthView {
      

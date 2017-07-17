@@ -5,12 +5,17 @@ import com.utility.OSchecker;
 
 import java.io.*;
 
+/**
+ * 
+ * @author flexiOps
+ *
+ *	Creates and sends the commands to block a VM from external access
+ */
 public class BlockVM {
 
 	public void blockfirewall(String host,String vmpassword, String sshkeypath) {		
 		
 		//Calls OS checker to determine if Ubuntu or Centos os
-
 		OSchecker oscheck = new OSchecker();
 		oscheck.oscheck(host, vmpassword, sshkeypath);
 		String localOS = oscheck.OSVERSION;
@@ -28,7 +33,7 @@ public class BlockVM {
 			host = host.substring(host.indexOf('@') + 1);
 
 			Session session = jsch.getSession(user, host, 22);
-			 //Used to determine if ssh key or password is proivded with command 
+			 //Used to determine if ssh key or password is provided with command 
 
 			if (sshkeypath.equals("-no")) {
 				 session.setPassword(vmpassword);
@@ -61,9 +66,7 @@ public class BlockVM {
 				
 			{
 
-				command = "sudo apt-get install ufw; echo y | sudo ufw enable";
-				//LoggerWrapper.myLogger.info( "ufw  found..setting firewall and disabling external connections......");
-	
+				command = "sudo apt-get install ufw; echo y | sudo ufw enable";	
 			}
 
 			Channel channel = session.openChannel("exec");
@@ -77,7 +80,7 @@ public class BlockVM {
 						break;
 					System.out.print(new String(tmp, 0, i));
 					info = new String(tmp, 0, i);
-					//Outputs responce for ssh connection
+					//Outputs response for ssh connection
 					System.out.print(info);
 				}
 				if (channel.isClosed()) {

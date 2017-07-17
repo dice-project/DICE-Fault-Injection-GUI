@@ -1,9 +1,5 @@
 package com.basic;
 
-import java.util.Arrays;
-
-import javax.faces.bean.ManagedBean;
-
 public class DeploymentInfo {
 	private String name;
 	private String faultname;
