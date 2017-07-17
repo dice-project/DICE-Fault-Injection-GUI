@@ -1,0 +1,84 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+
+<!-- override the template, to avoid using the header image twice -->
+<ui:define name="header"/>
+<ui:define name="content">
+<h:body>
+<h:form>
+   	<p:panelGrid id="panel"  style="border-spacing: 100px 50px;">	
+	<f:facet name="header">
+		<p:row>
+			<p:column colspan="2">
+				<h:graphicImage value="/images/DICEFIT.png" style="width:300px;height:90px"/>
+			</p:column>
+		</p:row>
+	</f:facet>
+   	<p:row>
+		<p:column style="font-weight:bold; text-align:center" styleClass="ui-widget-header" colspan="2">Virtual Machine Failures</p:column>
+	</p:row>
+	<p:row>
+		<p:column class="homeCol">
+  		 	<p:commandButton action="deployment" value="Deployment Faults" class="faultButton"/>
+   		</p:column>
+   		<p:column class="descrCol">
+   			Create faults within a deployment
+   		</p:column>
+   	</p:row>
+   	<p:row>
+		<p:column class="homeCol">
+		   	<p:commandButton action="blockvm" value="Block a VM" class="faultButton" />
+   		</p:column>
+   		<p:column class="descrCol">
+   			Block external access to a virtual machine 
+   		</p:column>
+   	</p:row>		
+   	<p:row>
+		<p:column class="homeCol">
+		   	<p:commandButton action="fco" value="Stop Random VM" class="faultButton"/>
+   		</p:column>
+   		<p:column class="descrCol">
+   			Stop a random VM from a cloud in FCO
+   		</p:column>
+   	</p:row>
+   	<p:row>
+		<p:column class="homeCol">
+		   	<p:commandButton action="service" value="Stop a Service" class="faultButton" />
+   		</p:column>
+   		<p:column class="descrCol">
+   			Stop a service running on a virtual machine
+   		</p:column>
+   	</p:row>
+
+   	<p:row>
+		<p:column style="font-weight: bold; text-align:center" styleClass="ui-widget-header" colspan="2">Virtual Machine Resource Overload</p:column>
+	</p:row>
+	<p:row>
+		<p:column class="homeCol">
+   			<p:commandButton action="cpu" value="CPU Overload" class="faultButton"/>
+   		</p:column>   		
+   		<p:column class="descrCol" rowspan="3">
+   			Overload the CPU, RAM or Disk on a virtual machine
+   		</p:column>   		
+   	</p:row>
+   	<p:row>
+		<p:column class="homeCol">
+   			<p:commandButton action="ram" value="RAM Overload" class="faultButton" />
+   		</p:column>
+   	</p:row>
+   	<p:row>
+		<p:column class="homeCol">
+		   	<p:commandButton action="disk" value="Disk Overload" class="faultButton"/>
+   		</p:column>
+   	</p:row>
+   </p:panelGrid>
+</h:form>
+</h:body>
+</ui:define>
+</ui:composition>
