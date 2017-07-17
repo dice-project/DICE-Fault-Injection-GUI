@@ -1,0 +1,84 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:body>
+			<h:form>
+				<p:panel id="panel" header="Stop Random VM">
+
+					<p:messages id="msgs" />
+					<h:outputText value="Stop a random VM within the FCO" />
+					<h:panelGrid columns="3" cellpadding="8">
+						<p:outputLabel for="username" value="FCO Cloud Username" />
+						<p:inputText id="username" value="#{fcoView.username}"
+							required="true" label="CLOUDUSERNAME">
+							<f:validateLength minimum="4" />
+						</p:inputText>
+						<p:message for="username" display="icon" />
+
+						<p:outputLabel for="password" value="Cloud Password" />
+						<p:password id="password" value="#{fcoView.password}"
+							label="Password" required="true" />
+						<p:ajax update="msgPassword" event="keyup" />
+						<p:message for="password" id="msgPassword" display="icon" />
+
+
+						<p:outputLabel for="clouduuid" value="CloudUUID" />
+						<p:inputText id="clouduuid" value="#{fcoView.clouduuid}"
+							label="CloudUUID" required="true">
+							<f:validateLength minimum="1" />
+							<p:ajax update="msgClouduuid" event="keyup" />
+						</p:inputText>
+						<p:message for="clouduuid" id="msgClouduuid" display="icon" />
+
+						<p:outputLabel for="apiendpoint" value="Cloudapiurl" />
+						<p:inputText id="apiendpoint" value="#{fcoView.apiendpoint}"
+							label="Cloudapiurl" required="true">
+							<f:validateLength minimum="1" />
+							<p:ajax update="msgApiendpoint" event="keyup" />
+						</p:inputText>
+						<p:message for="apiendpoint" id="msgApiendpoint" display="icon" />
+
+					</h:panelGrid>
+					<p:commandButton value="Start Fault" update="panel"
+						actionListener="#{fcoView.message}" icon="ui-icon-check" />
+					<p />
+					<h:form enctype="multipart/form-data">
+						<p:growl id="messages" showDetail="true" />
+
+						<p:panelGrid>
+							<p:row>
+								<p:column colspan="2">
+									<h:outputText value="Decription of what these are" />
+								</p:column>
+							</p:row>
+							<p:row>
+								<p:column>
+									<p:fileUpload value="#{fcoView.file}" mode="simple"
+										skinSimple="true" />
+									<p:commandButton value="Submit" ajax="false"
+										actionListener="#{userView.upload}" disabled="false"
+										update="growl" />
+								</p:column>
+							</p:row>
+						</p:panelGrid>
+					</h:form>
+				</p:panel>
+			</h:form>
+
+		</h:body>
+		<p:panel id="out" header="Output">
+			<p:scrollPanel id="FCOOUTPUT" mode="native"
+				style="width:500px;height:200px">
+				<p>
+					<h:outputText value="Output:" />
+					<h:outputText id="displayvalue" value="#{globals.fcotext}" />
+				</p>
+			</p:scrollPanel>
+		</p:panel>
+	</ui:define>
+</ui:composition>

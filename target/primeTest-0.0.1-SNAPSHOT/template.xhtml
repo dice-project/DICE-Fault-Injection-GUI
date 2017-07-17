@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<h:head>
+	<link rel="icon" type="image/x-icon" href="#{request.contextPath}/images/DICEFav.png"/>
+	<link rel="stylesheet" type="text/css" href="style.css"/>
+	<title>DICE Fault Injection Tool</title>
+</h:head>
+<h:body>
+	<div id="page">
+		<div id="header">
+			<ui:insert name="header">
+				<p:panelGrid>
+					<f:facet name="header">
+						<p:row>
+							<p:column colspan="2">
+								<h:outputLink value="home.xhtml">
+									<h:graphicImage value="/images/DICEFIT.png"
+										style="width:300px;height:90px" />
+								</h:outputLink>
+							</p:column>
+						</p:row>
+					</f:facet>
+				</p:panelGrid>
+			</ui:insert>
+		</div>
+		<div id="container">
+			<div id="content">
+				<ui:insert name="content">Default value for Content</ui:insert>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>
