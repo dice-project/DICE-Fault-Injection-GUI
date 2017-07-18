@@ -21,6 +21,7 @@ public class OSchecker {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
 	public void oscheck(String host, String vmpassword,String sshkeypath) {
 		
 //		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -51,7 +52,6 @@ public class OSchecker {
 			//LoggerWrapper.myLogger.info("Attempting to SSH to VM for OS check with ip " + host);
 			// use command to check if ubuntu is OS
 			String command ="grep 'NAME=\"Ubuntu\"' /etc/*-release";
-					
 
 			Channel channel = session.openChannel("exec");
 			((ChannelExec) channel).setCommand(command);
@@ -89,18 +89,16 @@ public class OSchecker {
 
 			}
 			
-			//If Ubuntu is not found them assume its Centos
+			//If Ubuntu is not found then assume its Centos
 			 if (info == null) {
 				 OSVERSION = "CENTOS";	
-				//LoggerWrapper.myLogger.info("CENTOS OS");
+				 System.out.println("CENTOS OS");
 			}
-			 else if (info.contains("Ubuntu")) {
-					OSVERSION = "UBUNTU";	
-					//LoggerWrapper.myLogger.info("UBUNTU OS");
-					
-				}
+			else if (info.contains("Ubuntu")) {
+				OSVERSION = "UBUNTU";	
+				System.out.println("UBUNTU OS");
+			}
 			 
-
 			in.close();
 			//Close after command sent
 			channel.disconnect();
