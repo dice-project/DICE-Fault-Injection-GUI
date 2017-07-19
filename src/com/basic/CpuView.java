@@ -103,7 +103,7 @@ public class CpuView implements Serializable{
     public void save(){
     	
     	System.out.println(getSshkeypath());
-    	
+  
     	if (getPassword().equals("-no"))
     	{
 			System.out.println(getSshkeypath());
