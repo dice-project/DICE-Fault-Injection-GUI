@@ -9,10 +9,10 @@ Ubuntu - Tested Ubuntu 14.0, 15.10
 Centos (With set Repo configured & wget installed) - Tested Centos 7
 
 Current faults:
-Deployment faults
-Shutdown a random VM
-Block VM external access (Using ufw)
-Stop service running on VM
-CPU Overload
-Memory Overload
-Disk I/O Overload
+Deployment faults, 
+Shutdown a random VM, 
+Block VM external access (Using ufw), 
+Stop service running on VM, 
+CPU Overload, 
+Memory Overload, 
+Disk I/O Overload.
