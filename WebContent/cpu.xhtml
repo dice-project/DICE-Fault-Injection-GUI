@@ -10,9 +10,9 @@
 			<h:form>
 				<p:panel id="panel" header="CPU Overload">
 					<f:facet name="header">
-						<p:commandButton action="home" icon="ui-icon-home" immediate="true" />
-						<h:outputText
-							value=" Cause high CPU usage" />
+						<p:commandButton action="home" icon="ui-icon-home"
+							immediate="true" />
+						<h:outputText value=" Cause high CPU usage" />
 					</f:facet>
 					<h:outputText
 						value="Cause high usage of the CPU on a VM. Enter the VM details, the number of CPU's on the VM and for how long to overload for." />
@@ -57,32 +57,31 @@
 						<p:message for="time" id="msgTime" display="icon" />
 					</h:panelGrid>
 
-
-					<p:commandButton value="Start Fault" update="panel"
+					<p:commandButton value="Start Fault" update="msgs"
 						actionListener="#{cpuView.message}" icon="ui-icon-check" />
-				<p/>
-				<p:panelGrid>
-					<p:row>
-						<p:column colspan="2">
-							<h:outputText value="Upload an SSH key in place of the password" />
-						</p:column>
-					</p:row>
-					<p:row>
-						<p:column>
-							<p:fileUpload value="#{cpuView.file}" mode="simple"
-								skinSimple="true" />
-							<p:commandButton value="Submit" ajax="false"
-								actionListener="#{cpuView.upload}" disabled="false" icon="ui-icon-check"
-								update="out" />
-						</p:column>
-					</p:row>
-				</p:panelGrid>
+					<p />
+					<p:panelGrid>
+						<p:row>
+							<p:column colspan="2">
+								<h:outputText value="Upload an SSH key in place of the password" />
+							</p:column>
+						</p:row>
+						<p:row>
+							<p:column>
+								<p:fileUpload value="#{cpuView.file}" mode="simple"
+									skinSimple="true" />
+								<p:commandButton value="Submit" ajax="false"
+									actionListener="#{cpuView.upload}" disabled="false"
+									icon="ui-icon-check" update="panel" />
+							</p:column>
+						</p:row>
+					</p:panelGrid>
 				</p:panel>
 			</h:form>
-
 			<h:form enctype="multipart/form-data">
-				<p:growl id="messages" showDetail="true" />
-
+				<p:growl id="messages" showDetail="true" autoUpdate="true" />
+				<p:poll interval="1" listener="#{cpuView.poll}" update="CPUTEST"/>
+				
 			</h:form>
 		</h:body>
 		<p:panel id="out" header="Output">

@@ -54,7 +54,6 @@ public class CpuStress {
 		}
 		if (localOS.equals("UBUNTU")) {
 			command = "dpkg-query -W -f='${Status}' stress";
-
 		} else {
 			// CENTOS will not accept first command so "dud" command sent
 			command = "";
@@ -203,8 +202,6 @@ public class CpuStress {
 			
 			// Successfully appends text, without making a new 'requestcontext'
 			RequestContext.getCurrentInstance().update(output);
-			
-			
 		} catch (Exception e) {
 			// LoggerWrapper.myLogger.severe("Unable to SSH to VM " +
 			// e.toString());

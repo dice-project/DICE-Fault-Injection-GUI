@@ -6,7 +6,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ActionEvent;
+import javax.faces.event.ActionListener;
 
+import org.primefaces.context.RequestContext;
 import org.primefaces.model.UploadedFile;
 
 import com.faults.CpuStress;
@@ -15,7 +19,7 @@ import com.utility.Uploader;
  
 @ManagedBean
 @SessionScoped
-public class CpuView implements Serializable{
+public class CpuView{
      
     private String ip;
     private String username;
@@ -26,13 +30,14 @@ public class CpuView implements Serializable{
 	private UploadedFile file;
 	private String test = "test";
 	
-	
     public String getIp() {
         return ip;
     }
+    
     public String getTest() {
         return test;
     }
+    
     public void setIp(String ip) {
         this.ip = ip;
     }
@@ -97,7 +102,23 @@ public class CpuView implements Serializable{
 		 	// Creates a message on the page
 	    	FacesContext.getCurrentInstance().addMessage(null,
 	                new FacesMessage("Fault started on: " + ip + " " + username + " " + cpu  + " " + time + " seconds" ));
+//	    	Thread t = new Thread() {
+//	    		public void run(){
+//	    			try{
+//	    				System.out.println("New thread started, calling CPU fault");
+//	    				save();
+//	    			}catch(Exception e){}
+//	    		}
+//	    	};
+//	    	t.start();
 	    	save();
+			RequestContext requestContextNew = RequestContext.getCurrentInstance();
+			requestContextNew.update("CPUTEST");
+	 }
+	 
+	 public void poll(){
+		RequestContext requestContextNew = RequestContext.getCurrentInstance();
+		requestContextNew.update("CPUTEST");
 	 }
  
     public void save(){
@@ -117,7 +138,8 @@ public class CpuView implements Serializable{
 			//System.out.println("Running without creating & deleting a file");
 			//LoggerWrapper.myLogger.info( "Executing random VM stop");
 			//Logger.getGlobal().log(new LogRecord(Level.ALL, "Testing logger"));
-    	}else
+    	}
+    	else
     	{
 	 		sshkeypath = "-no";
 	  	    String host= username +"@"+ip;
