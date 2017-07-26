@@ -10,16 +10,16 @@ Centos (With set Repo configured & wget installed) - Tested Centos 7
 
 Current faults:
 
-Deployment faults,
+Deployment faults
 
-Shutdown a random VM, 
+Shutdown a random VM
 
-Block VM external access (Using ufw), 
+Block VM external access (Using ufw)
 
-Stop service running on VM, 
+Stop service running on VM
 
-CPU Overload, 
+CPU Overload
 
-Memory Overload, 
+Memory Overload
 
-Disk I/O Overload.
+Disk I/O Overload
