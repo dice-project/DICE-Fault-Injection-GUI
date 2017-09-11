@@ -85,21 +85,18 @@ public class CpuView{
 	public String getSshkeypath() {
 		return sshkeypath;
 	}
+	
 	public void setSshkeypath(String sshkeypath) {
 		this.sshkeypath = sshkeypath;
 	}
-	     
 
-	 public void upload() throws IOException {
-	        
+	public void upload() throws IOException {
 	    	Uploader uploader = new Uploader();
 	    	setSshkeypath(uploader.upload(getFile(),Globals.getSSHKeyPath()));
-	    	
 	}
 	 
-	 public void message()
-	 {	
-		 	// Creates a message on the page
+	public void message()
+	{
 	    	FacesContext.getCurrentInstance().addMessage(null,
 	                new FacesMessage("Fault started on: " + ip + " " + username + " " + cpu  + " " + time + " seconds" ));
 //	    	Thread t = new Thread() {
@@ -119,6 +116,7 @@ public class CpuView{
 	 public void poll(){
 		RequestContext requestContextNew = RequestContext.getCurrentInstance();
 		requestContextNew.update("CPUTEST");
+		System.out.println("poll called");
 	 }
  
     public void save(){

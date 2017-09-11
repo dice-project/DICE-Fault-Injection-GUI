@@ -58,7 +58,7 @@
 					</h:panelGrid>
 
 					<p:commandButton value="Start Fault" update="msgs"
-						actionListener="#{cpuView.message}" icon="ui-icon-check" />
+						actionListener="#{cpuView.message}" icon="ui-icon-check" ajax="true" />
 					<p />
 					<p:panelGrid>
 						<p:row>
@@ -72,7 +72,7 @@
 									skinSimple="true" />
 								<p:commandButton value="Submit" ajax="false"
 									actionListener="#{cpuView.upload}" disabled="false"
-									icon="ui-icon-check" update="panel" />
+									icon="ui-icon-check" update="panel" async="true" />
 							</p:column>
 						</p:row>
 					</p:panelGrid>
@@ -80,9 +80,8 @@
 			</h:form>
 			<h:form enctype="multipart/form-data">
 				<p:growl id="messages" showDetail="true" autoUpdate="true" />
-				<p:poll interval="1" listener="#{cpuView.poll}" update="CPUTEST"/>
-				
 			</h:form>
+			
 		</h:body>
 		<p:panel id="out" header="Output">
 			<p:scrollPanel id="CPUTEST" mode="native"

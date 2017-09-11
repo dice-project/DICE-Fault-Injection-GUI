@@ -48,7 +48,7 @@ public class DiceDeploymentCall {
 			}
 
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-
+			
 			String output;
 			String jsonString = "";
 			System.out.println("Output from Server .... \n");
@@ -73,7 +73,7 @@ public class DiceDeploymentCall {
 					}
 				} else {
 					Globals.deploymenttext = Globals.deploymenttext.concat(
-							"Unable to get deployment information for this deployement, perhaps the blueprint is empty? \n");
+							"Unable to get deployment information for this deployment, perhaps the blueprint is empty? \n");
 				}
 			}
 			RequestContext requestContext = RequestContext.getCurrentInstance();
@@ -299,7 +299,7 @@ public class DiceDeploymentCall {
 			String jsonString = "";
 			System.out.println("Output from Server .... \n");
 			while ((output = br.readLine()) != null) {
-				jsonString = output;
+				jsonString = output; 
 			}
 			File file = new File("Deployment.txt");
 

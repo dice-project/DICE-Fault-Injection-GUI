@@ -185,7 +185,6 @@ public class CpuStress {
 					Thread.sleep(1000);
 				} catch (Exception ee) {
 				}
-
 			}
 			in1.close();
 			// Close after second command
@@ -196,7 +195,7 @@ public class CpuStress {
 //			Globals.cputext = text + baos.toString() + " LINE 203 ";
 //			RequestContext requestContext6 = RequestContext.getCurrentInstance();
 //			requestContext6.update(output);
-
+			
 			RequestContext requestContext7 = RequestContext.getCurrentInstance();
 			requestContext7.update(output);
 			
@@ -208,7 +207,6 @@ public class CpuStress {
 			Globals.cputext = text + "Unable to SSH to VM " + e.toString();
 			RequestContext requestContext7 = RequestContext.getCurrentInstance();
 			requestContext7.update(output);
-
 		}
 	}
 }
