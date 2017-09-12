@@ -131,9 +131,7 @@ public class CpuView{
 			CpuStress cpustress = new CpuStress();
 			cpustress.stresscpu(cpu,time,password,host,getSshkeypath(),"CPUTEST");
 			System.out.println(sshkeypath);
-			//File file = new File(getSshkeypath());
-			//file.delete();
-			//System.out.println("Running without creating & deleting a file");
+
 			//LoggerWrapper.myLogger.info( "Executing random VM stop");
 			//Logger.getGlobal().log(new LogRecord(Level.ALL, "Testing logger"));
     	}
