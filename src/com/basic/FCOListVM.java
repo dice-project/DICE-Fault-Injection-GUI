@@ -38,6 +38,7 @@ public static String fcotext = "fcotext";
 	public void setFcotext(String fcotext) {
 		this.fcotext = fcotext;
 	}
+	// Create list of vms
 	public void listvms(String cloudusername, String cloudpassword,
 			String cloudapiurl, String cloudUUID) {
 		Globals.fcotext= Globals.fcotext + "In Here";
