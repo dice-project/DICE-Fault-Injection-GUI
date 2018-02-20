@@ -13,6 +13,7 @@ import java.io.*;
  */
 public class BlockVM {
 
+	// Block firewall constructor 
 	public void blockfirewall(String host,String vmpassword, String sshkeypath) {		
 		
 		//Calls OS checker to determine if Ubuntu or Centos os
@@ -26,7 +27,8 @@ public class BlockVM {
 		try {
 			
 			String info = null;
-
+			
+			//Uses JSch to access VMs via SSH and issue commands
 			JSch jsch = new JSch();
 
 			String user = host.substring(0, host.indexOf('@'));
